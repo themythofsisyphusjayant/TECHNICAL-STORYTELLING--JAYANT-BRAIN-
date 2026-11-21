@@ -20,7 +20,63 @@ I tell every story here the same way:
 
 ## THE PROJECTS
 
-I build the whole stack myself. Qasida is my programming language, big32 is my CPU, and MOON-OS is the operating system that runs on it — each one exists so the next one has something real to stand on. Black Moon OS is the Linux distro I built while the real OS was still coming together. Around them are the smaller builds that taught me how: an 8-bit CPU, a chip reversed from its layout alone, a swarm of agents, a little society that debates hard decisions, and two language-model experiments that both ended in honest negative results. And one paper, which started as a question about trust and ended as a proof about what trust can't do. This repo is where I write down how all of it actually happened.
+I build the whole stack myself. Each one gets its own short note below.
+
+### Qasida
+
+My programming language. It compiles itself now, shipped 2.3.0 on 16 Nov, and safe mode ties or beats C on every quant benchmark after Fix 1 and Fix 2. The standard library is at 210 of 500 after one sprint day — 42% of Python's level — and climbing.
+
+### big32
+
+My 32-bit RISC-V CPU, built from zero in Verilog. Linux 6.6.52 boots in simulation into early driver initialisation; the Step 34 stall fix is in and the rebuild is green, and the ~20-hour boot probe is the next step.
+
+### MOON-OS
+
+An operating system written entirely in Qasida, no Linux anywhere. The kernel, scheduler, filesystem, shell and GUI are in progress, and the daily-ten cadence built 120 utilities in eight days. Right now the kernel is up against a hard wall — 4,319 words against 4,096 words of instruction memory.
+
+### OpenMythos
+
+A language model I built from scratch. The 44M run on TinyStories was an honest negative result — extra loop depth didn't help — and the 1B plan is written, waiting on compute.
+
+### Recurrent Small Language Models
+
+The technical report behind the loop-depth sweep. Perplexity falls from 29.4 to 4.4 as loops go from 1 to 4, then flatlines — extra loops buy nothing past the trained depth.
+
+### Provenance-Aware Belief Aggregation
+
+My research paper. It started from a paradox and ended as a proof that trust weights can't decode conventions, with a Bayesian aggregator that can. 17 pages, reproducible over 190 seeds.
+
+### The ASIC Puzzle
+
+I reversed a chip from its layout alone — 728 cells, 12,615 polygons — and proved its 121-bit key unique. The submission itself was impossible from the start, so the write-up is the win.
+
+### TINY8
+
+My 8-bit CPU, six versions in one night under a strict compatibility rule. It taught me the architecture; the wall it hit is why I moved to a 32-bit core.
+
+### Nyx
+
+A deterministic decision-intelligence simulator: a miniature society of agents debates a hard decision and produces a forecast of risks and fragile assumptions. Same seed, same outcome.
+
+### harshswarm
+
+My multi-agent swarm — agents that debate through a 14-endpoint API.
+
+### Black Moon OS
+
+An Arch-based Linux distribution with a macOS-style desktop, shipping JalOS, a teaching operating system written in Qasida. Bootable ISO built October 2026.
+
+### qasida-tmLanguage
+
+The editor grammar for Qasida — 24 patterns covering the language's syntax, so editors can highlight it properly.
+
+### The Profile
+
+My GitHub profile — the front door to all of this, redesigned in the same warm style as this repo.
+
+### This Repo
+
+Technical Storytelling itself — where I write down how all of it actually happened, in my own words.
 
 <div align="center">
 
@@ -32,7 +88,7 @@ I build the whole stack myself. Qasida is my programming language, big32 is my C
 
 <div align="center">
 
-<img src="docs/sprint-day-one.png" alt="Qasida Top-500 sprint day one: HAVE 71 to 190, GAP 367 to 282" width="640" />
+<img src="docs/sprint-day-one.png" alt="Qasida Top-500 sprint day one: HAVE 71 to 210, GAP 367 to 264" width="640" />
 <img src="docs/stories-live.png" alt="8 of 13 stories live" width="300" />
 
 </div>

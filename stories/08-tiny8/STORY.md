@@ -80,7 +80,7 @@ That became a separate project: big32, a 32-bit RISC-V core aimed at one day run
 
 ## What is still open
 
-- Synthesis with Yosys: gate count and area estimate on SkyWater 130nm. Not done. [NEEDS JAYANT'S WORD: do you still want to pursue a TinyTapeout submission, or is tiny8 finished as a learning build?]
+- Synthesis with Yosys: gate count and area estimate on SkyWater 130nm. Not done. [I still need to write this part — whether I still want to pursue a TinyTapeout submission, or whether tiny8 is finished as a learning build.]
 - Interrupts, a timer, or a second display/keypad port. Not built.
 - The encoding is full. Any new instruction needs a prefix scheme or a wider word.
 

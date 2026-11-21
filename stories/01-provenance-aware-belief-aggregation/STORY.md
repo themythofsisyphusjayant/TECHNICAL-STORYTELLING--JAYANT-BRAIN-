@@ -8,7 +8,7 @@
 
 ## 0. Where it started
 
-> **[NEEDS JAYANT'S WORD]** — Jayant says this work started from the "existence value paradox" and ended somewhere completely different. No source I could find — not the paper, not the repo, not the notes — says what that paradox was. This section is his to fill in: what the paradox was, and what made him chase it.
+> **[I still need to write this part — what the existence value paradox actually was]** — I started this work from the "existence value paradox" and ended somewhere completely different. No source I could find — not the paper, not the repo, not the notes — says what that paradox was. This section is mine to fill in: what the paradox was, and what made me chase it.
 
 What the sources do show is where the chase landed: a question about what a message means, not who to trust.
 
@@ -30,15 +30,15 @@ That is the problem, named in the paper as **convention heterogeneity**. It is d
 
 ## 2. Design decisions
 
-**Model the convention, not just the reliability.** The work formalises the problem as a generative latent-variable model in which source identity is part of the process that generates each message — with involutive conventions, a stability parameter ρ, and reliability kept strictly separate from convention.
+**Model the convention, not just the reliability.** I formalised the problem as a generative latent-variable model in which source identity is part of the process that generates each message — with involutive conventions, a stability parameter ρ, and reliability kept strictly separate from convention.
 
-**Eight conventions, all involutions.** The benchmark uses eight conventions (identity, NOT, XOR with context bits and their combinations), all satisfying f(f(x, a), a) = x. The aggregator relies on that property to recover the underlying reading from an observed message.
+**Eight conventions, all involutions.** I used eight conventions in the benchmark (identity, NOT, XOR with context bits and their combinations), all satisfying f(f(x, a), a) = x. The aggregator relies on that property to recover the underlying reading from an observed message.
 
-**A Bayesian aggregator that decodes first.** Instead of weighting messages directly, the aggregator treats each source's reporting convention as a latent variable and decodes it jointly with the underlying reading. It enumerates a fixed grid over convention stability (ρ) and reliability (r) in full — no sampling, no randomness in the aggregator itself.
+**A Bayesian aggregator that decodes first.** Instead of weighting messages directly, I built an aggregator that treats each source's reporting convention as a latent variable and decodes it jointly with the underlying reading. It enumerates a fixed grid over convention stability (ρ) and reliability (r) in full — no sampling, no randomness in the aggregator itself.
 
-**Prove the limits, don't just beat baselines.** Three theorems, not one: nonnegative-weight insufficiency (no nonnegative weighting can recover the truth under convention heterogeneity), scalar insufficiency under context-dependent conventions (a single scalar per source cannot capture a convention that conditions on context), plus equal-reliability optimum and posterior consistency (the aggregator converges on the observational-equivalence class of the truth as evidence accumulates).
+**Prove the limits, don't just beat baselines.** I proved three theorems, not one: nonnegative-weight insufficiency (no nonnegative weighting can recover the truth under convention heterogeneity), scalar insufficiency under context-dependent conventions (a single scalar per source cannot capture a convention that conditions on context), plus equal-reliability optimum and posterior consistency (the aggregator converges on the observational-equivalence class of the truth as evidence accumulates).
 
-**Test it like you don't believe it.** Ten lettered experiments (A–I plus an LLM communication benchmark and a real-human-judgment CIFAR-10H study), headline tables banked over 190 seeds (A: 100; B/C/E: 30 each), 95% confidence intervals throughout. Reproducibility built in from the start: seeded RNGs (`SafeRNG`), smoke tests, a brute-force check of the posterior-predictive fix, one-command regeneration with `bash reproduce.sh`.
+**Test it like you don't believe it.** I ran ten lettered experiments (A–I plus an LLM communication benchmark and a real-human-judgment CIFAR-10H study), headline tables banked over 190 seeds (A: 100; B/C/E: 30 each), 95% confidence intervals throughout. Reproducibility built in from the start: seeded RNGs (`SafeRNG`), smoke tests, a brute-force check of the posterior-predictive fix, one-command regeneration with `bash reproduce.sh`.
 
 ---
 
@@ -46,7 +46,7 @@ That is the problem, named in the paper as **convention heterogeneity**. It is d
 
 ### The theorem that was too strong
 
-The original Theorem 2 was stated too strongly. A skeptical audit caught it: only the repaired, narrower version is proved. On 21 Oct 2026 Jayant ordered "Fix everything", and Theorem 2 was restated (log-odds form ρ > 0; decision form ρ > 1/2 + dominance) with a new BSC-channel proof, propagated through the abstract, introduction, discussion and conclusion.
+The original Theorem 2 was stated too strongly. A skeptical audit caught it: only the repaired, narrower version is proved. On 21 Oct 2026 I ordered "Fix everything", and Theorem 2 was restated (log-odds form ρ > 0; decision form ρ > 1/2 + dominance) with a new BSC-channel proof, propagated through the abstract, introduction, discussion and conclusion.
 
 The lesson was not "we made a mistake". The lesson was that the audit was the work — the paper got *more* trustworthy by having its central claim narrowed.
 
@@ -112,15 +112,15 @@ On real CrowdTruth medical judgments, the context decoder beat the best scalar o
 
 | When | What changed | Why |
 |---|---|---|
-| Start | The work began from the "existence value paradox" | [NEEDS JAYANT'S WORD — see §0] |
+| Start | I began this work from the "existence value paradox" | [I still need to write this — see §0] |
 | During the build | The paper became two impossibility theorems + a constructive aggregator, not a better weighting scheme | The problem turned out to be interpretation, not trust |
 | 21 Oct 2026 | Skeptical audit → "Fix everything" repair pass | Theorem 2 too strong; numbers wrong across the paper; references wrong |
 | 21 Oct 2026 | PVI-REAL validation programme ("Perform every experiment") | The synthetic benchmark was not enough evidence — controlled panels, real CrowdTruth judgments, adversarial failure map added as §6.13; paper grew 16 → 17 pages |
 | 21 Oct 2026 | Calibration built into the aggregator (Experiment Pack II) | Study B showed calibration, not accuracy, was the bottleneck |
 | 8 Oct 2026 | AAMAS 2027 main track closed → workshop route | Deadline missed; workshop paper (Hanoi, 3–4 May 2027) is the route, recommended deadline 24 Jan 2027 |
-| Still open | Zenodo preprint upload; LLM panel re-run (needs OpenRouter credit — zero balance); human RCT (needs participants, consent, payment) | Blocked on his sign-in/approval and on spend approval, not on the science |
+| Still open | Zenodo preprint upload; LLM panel re-run (needs OpenRouter credit — zero balance); human RCT (needs participants, consent, payment) | Blocked on my sign-in/approval and on spend approval, not on the science |
 
-The paper that exists now is not the paper that was started. It started from a paradox about value, became a proof that trust weights cannot decode conventions, survived an audit that narrowed its central theorem and corrected its numbers, and then grew a validation programme that tested it against real human judgments and adversarial attacks. Each change made the claims smaller and the evidence stronger.
+The paper that exists now is not the paper I started. I started from a paradox about value, and it became a proof that trust weights cannot decode conventions, survived an audit that narrowed its central theorem and corrected its numbers, and then grew a validation programme that tested it against real human judgments and adversarial attacks. Each change made the claims smaller and the evidence stronger.
 
 ---
 

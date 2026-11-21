@@ -18,6 +18,10 @@ I tell every story here the same way:
 4. **Lessons** — what the failures taught, stated as rules I now follow.
 5. **What changed the plan** — how the goal, the design, or the schedule moved because of what happened.
 
+## THE PROJECTS
+
+I build the whole stack myself. Qasida is my programming language, big32 is my CPU, and MOON-OS is the operating system that runs on it — each one exists so the next one has something real to stand on. Black Moon OS is the Linux distro I built while the real OS was still coming together. Around them are the smaller builds that taught me how: an 8-bit CPU, a chip reversed from its layout alone, a swarm of agents, a little society that debates hard decisions, and two language-model experiments that both ended in honest negative results. And one paper, which started as a question about trust and ended as a proof about what trust can't do. This repo is where I write down how all of it actually happened.
+
 <div align="center">
 
 [![Technical Storytelling repo card](https://github-readme-stats.vercel.app/api/pin/?username=themythofsisyphusjayant&repo=TECHNICAL-STORYTELLING--JAYANT-BRAIN-&bg_color=FAF6F0&title_color=2B2622&text_color=5A5148&icon_color=C08A7E&hide_border=true)](https://github.com/themythofsisyphusjayant/TECHNICAL-STORYTELLING--JAYANT-BRAIN-)

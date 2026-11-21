@@ -57,7 +57,7 @@ The stack was read live, not guessed. The task struct at physical address 0x8283
 
 The driver was doing nothing wrong by its own lights. It registered. It found no device, because big32 has no JH7110 PLL in its device tree. It unregistered. The unregister path went through `klist_remove`. And there it slept.
 
-Attempt 17 passed the same initcall. Same driver, same path, no hang. So the hang is timing or state dependent, not systematic per driver. That is the uncomfortable part. It means the next probe-only driver in the list could hang the same way. The probe will tell us. It has not run yet.
+Attempt 17 passed the same initcall. Same driver, same path, no hang. So the hang is timing or state dependent, not systematic per driver. That is the uncomfortable part. It means the next probe-only driver in the list could hang the same way. The probe will tell me. It has not run yet.
 
 ## The one open question
 
@@ -69,7 +69,7 @@ This does not block the fix. Disabling the drivers removes the hanging path. But
 
 ## The fix, in two parts
 
-Jayant approved it on 18 Nov: "Apply both parts and run the probe."
+I approved it on 18 Nov: "Apply both parts and run the probe."
 
 Part A fixes the real virtio bug, even though it was not the stall. Three changes. The RTL idle trigger compares 16-bit to 16-bit, `v_last_avail[15:0] != v_avail_idx`, so the device processes exactly one phantom chain after the wrap and then goes idle. A Status=0 device reset now also clears `v_avail_idx`, which the hardware reset already did but the device reset did not. The bootloader quiesces the device before handoff: Status=0, then QueueReady=0. All three are complementary. The bootloader quiesce alone stops the runaway at handoff. The RTL changes make the device correct even if a future loader leaves it mid-chain.
 
@@ -83,11 +83,11 @@ Two rebuilds were lost to VM restarts along the way. The cross-compiler was wipe
 
 Four things changed.
 
-First, the estimate. The investigation file said the re-test probe to 500M cycles would take about 2 hours. That was wrong. The real pace is about ten and a half minutes per 5M segment. 500M cycles is 18 to 20 hours of wall time. Two hours would only cover about 50M cycles, short of the 450M stall point. The probe was put to Jayant with the corrected number. [NEEDS JAYANT'S WORD] — no reply to the proceed-or-hold choice is recorded, and the probe has not launched.
+First, the estimate. The investigation file said the re-test probe to 500M cycles would take about 2 hours. That was wrong. The real pace is about ten and a half minutes per 5M segment. 500M cycles is 18 to 20 hours of wall time. Two hours would only cover about 50M cycles, short of the 450M stall point. I was given the corrected number and asked to choose: proceed or hold. [I still need to decide this — no reply to the proceed-or-hold choice is recorded, and the probe has not launched.]
 
 Second, the test. The probe's pass criteria are written down before it runs. Kernel time past 40 seconds. The serial8250 and ttyS0 lines, entry [124]. Then virtio block, `[vda]`, Legacy PMU, VFS root. The falsifier is written down too. If the log stalls again after bfq with no serial line, Part B did not help, the hang moved to the next probe-only driver, and the root cause is systematic. That is a result, not a failure. It would point at a kernel driver-core investigation.
 
-Third, the load check. `boot_check.py` passed after the rebuild. The longer load check, `bootload_check.py`, was running after that. [NEEDS JAYANT'S WORD] — its result is not in the record I worked from, and the probe is only ready once it goes green.
+Third, the load check. `boot_check.py` passed after the rebuild. The longer load check, `bootload_check.py`, was running after that. [I still need to check this — its result is not in the record, and the probe is only ready once it goes green.]
 
 Fourth, the checkpoints. The 835M checkpoint set is preserved as evidence. The old checkpoint sets are not resume points. The attempt-18 set and the attempt-17 sets carry the wrong disk or the wrong state, and resuming one would silently replay a dead run. Do not resume old checkpoints.
 
@@ -105,7 +105,7 @@ Estimates are claims. The re-boot was estimated at 20 to 30 hours. It took 43 ho
 
 ## Status
 
-Step 34's bootloader goal is done and verified: the bootloader loads the kernel image from the virtio disk by itself, with no testbench shortcut. The full-boot goal is blocked on the probe. The fix is applied and rebuilt. The probe waits on Jayant's call. The one open question, who holds the extra klist reference, is still open.
+Step 34's bootloader goal is done and verified: the bootloader loads the kernel image from the virtio disk by itself, with no testbench shortcut. The full-boot goal is blocked on the probe. The fix is applied and rebuilt. The probe waits on my call. The one open question, who holds the extra klist reference, is still open.
 
 ## Sources
 
@@ -113,5 +113,5 @@ Step 34's bootloader goal is done and verified: the bootloader loads the kernel 
 - `~/workspace/big32/work/step34_virtio_reset_investigation.txt` (18 Nov 2026, 436 lines): the split verdict, the live stack, the virtio device state, the RTL reset behaviour, the proposed two-part fix, the open question.
 - `~/workspace/big32/work/step34_fix2_backups/`: pre-edit backups of the kernel `.config` (all ten JH7110 drivers `=y`), the DTB (1,486 bytes), `big32_soc2.v`, and `bootloader.s`.
 - Live tree check, 21 Nov 2026: the rebuilt kernel `.config` has JH7110 PLL/SYS clocks and SYS/AON pinctrl `not set`; the remaining JH7110 clock, pinctrl, and reset options are absent entirely.
-- `~/MEMORY.md`, big32 section, and the 18 Nov 2026 daily log: fix approval, rebuild numbers (kernel 34,401,148 bytes, disk 35,449,856 bytes, DTB 1,502 bytes with `initcall_debug`, bootloader 901 words), `boot_check.py` PASS, the probe-time correction (18–20h, not ~2h), probe awaiting Jayant's call.
+- `~/MEMORY.md`, big32 section, and the 18 Nov 2026 daily log: fix approval, rebuild numbers (kernel 34,401,148 bytes, disk 35,449,856 bytes, DTB 1,502 bytes with `initcall_debug`, bootloader 901 words), `boot_check.py` PASS, the probe-time correction (18–20h, not ~2h), probe awaiting my call.
 - Live repo README, `themythofsisyphusjayant/BIG-32` (Contents API, 21 Nov 2026): Phase 5 done, Steps 26–31 proven, Step 34 not yet in the boot-results table.

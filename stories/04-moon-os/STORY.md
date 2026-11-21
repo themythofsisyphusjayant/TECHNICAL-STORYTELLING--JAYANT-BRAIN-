@@ -15,18 +15,18 @@ So the OS is the test. It runs in the open.
 
 ## The goal
 
-Set 27 October 2026: recreate something bigger than TempleOS, completely in
-his own programming language. No Linux anywhere in the stack. Own kernel,
-drivers, filesystem, shell, GUI, networking, built on his own CPU (big32)
-and in his own language.
+I set it 27 October 2026: recreate something bigger than TempleOS, completely in
+my own programming language. No Linux anywhere in the stack. My own kernel,
+drivers, filesystem, shell, GUI, networking, built on my own CPU (big32)
+and in my own language.
 
 Order matters. First make the language capable of it, then build the OS.
-That order was set on the same day as the goal.
+I set that order on the same day as the goal.
 
-[NEEDS JAYANT'S WORD] What "bigger than TempleOS" means in concrete terms.
+[I still need to write this part — what "bigger than TempleOS" means in concrete terms.
 More lines of code? More features? More apps? The goal as written does not
 say. And why TempleOS is the benchmark at all — what about it is worth
-beating — is not written down anywhere either.
+beating — is not written down anywhere either.]
 
 ## Design decisions
 
@@ -63,7 +63,7 @@ integrated 13 Nov 2026.
 
 ## The daily-ten cadence
 
-On 29 October 2026 the rule became: 10+ OS items AND 10+ library/feature/fix
+I set the rule on 29 October 2026: 10+ OS items AND 10+ library/feature/fix
 items per day. Two separate daily targets. Surplus on one track does not
 cover a shortfall on the other. Both counts are reported separately.
 
@@ -83,9 +83,9 @@ live as `3f131344`, 40/40 on both compilers.
 The other 40 app sources predate the daily cadence: the core utilities
 (`cat`, `cp`, `ls`, `ps`, `grep`, `sort`, `wc`, and the rest).
 
-[NEEDS JAYANT'S WORD] Why ten a day, and why the two tracks are counted
+[I still need to write this part — why ten a day, and why the two tracks are counted
 separately instead of as one pool of twenty. The rule exists in the notes.
-The reasoning behind the number does not.
+The reasoning behind the number does not.]
 
 ## Failed attempts
 
@@ -120,8 +120,8 @@ Baseline tests re-verified: 0 failures. The slice did not land.
 Three routes exist: a slimmer allocator, freeing room elsewhere, or the
 SOC2 instruction-memory route. None is chosen yet.
 
-[NEEDS JAYANT'S WORD] Which route. This is Jayant's call, and it is the
-one decision blocking the OS chain.
+[I still need to decide this — which route. This is my call, and it is the
+one decision blocking the OS chain.]
 
 **A wrong docstring, caught by the same work.** While the allocator slice
 was being reverted, the unified kernel docstring was found to be wrong: it
@@ -165,13 +165,13 @@ ten small apps a day. Eighty apps in eight days. The repo went from a
 kernel with a shell to a kernel with a shell plus 120 Unix-style utilities,
 each one verified under both compilers.
 
-**The push grant changed the pace.** On 10 November 2026, the blanket push
-grant landed: verified-green work (own test all pass, ASan clean, format
+**The push grant changed the pace.** On 10 November 2026, I gave the blanket push
+grant: verified-green work (own test all pass, ASan clean, format
 idempotent, full suite pass — or flake-only with a 4× rerun plus docs) can
 be pushed freely, without asking per push. The 17–18 Nov batches went live
-as `3319ee38` on Jayant's "do whatever is best" delegation under that
+as `3319ee38` on my "do whatever is best" delegation under that
 grant. Spending money, Kaggle runs, new repos, merges, big32 pushes, and
-releases still need his word.
+releases still need my word.
 
 **The size wall changed the next slice.** The plan was: adopt the lifetime
 allocator into the unified kernel. The plan now is: decide the route round

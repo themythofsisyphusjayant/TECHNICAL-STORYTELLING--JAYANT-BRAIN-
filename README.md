@@ -1,4 +1,12 @@
-# Technical Storytelling — Jayant's Brain
+<div align="center">
+
+![Technical Storytelling — the stories behind the builds](docs/banner.png)
+
+[![Stories live](https://img.shields.io/badge/stories-8%20live-C08A7E?style=flat-square)](stories/)
+[![Honesty rule](https://img.shields.io/badge/nothing-invented-B08D57?style=flat-square)](#the-honesty-rule)
+[![Template](https://img.shields.io/badge/story-template-9CAF88?style=flat-square)](stories/TEMPLATE.md)
+
+</div>
 
 The story behind the work. Not the README version — the real version: what the problem actually was, what we decided and why, what failed, what we learned, and how the plan changed along the way.
 
@@ -10,11 +18,28 @@ Every story here is told the same way:
 4. **Lessons** — what the failures taught, stated as rules we now follow.
 5. **What changed the plan** — how the goal, the design, or the schedule moved because of what happened.
 
-## The honesty rule
+<div align="center">
+
+[![Technical Storytelling repo card](https://github-readme-stats.vercel.app/api/pin/?username=themythofsisyphusjayant&repo=TECHNICAL-STORYTELLING--JAYANT-BRAIN-&bg_color=FAF6F0&title_color=2B2622&text_color=5A5148&icon_color=C08A7E&hide_border=true)](https://github.com/themythofsisyphusjayant/TECHNICAL-STORYTELLING--JAYANT-BRAIN-)
+
+</div>
+
+## BY THE NUMBERS
+
+<div align="center">
+
+<img src="docs/sprint-day-one.png" alt="Qasida Top-500 sprint day one: HAVE 71 to 190, GAP 367 to 282" width="640" />
+<img src="docs/stories-live.png" alt="8 of 13 stories live" width="300" />
+
+</div>
+
+*Qasida Top-500, sprint day one — verified counts from the push log, 21 Nov 2026. The Qasida story itself is date-stamped the same day.*
+
+## THE HONESTY RULE
 
 Nothing in these stories is invented. Every number, date, decision and failure comes from a source — the project repo, the local work tree, the notes, or the paper — and each story lists its sources at the end. Where the record ends, the story says so, marked **[NEEDS JAYANT'S WORD]**. Those gaps are Jayant's to fill in, not anyone's to guess.
 
-## Stories
+## STORIES
 
 | # | Story | What it's about | Status |
 |---|---|---|---|
@@ -27,7 +52,7 @@ Nothing in these stories is invented. Every number, date, decision and failure c
 | 07 | [The ASIC Puzzle](stories/07-asic-puzzle-2026-solution/STORY.md) | Reversing a chip from its layout alone, four methods in parallel, a key proved unique — and a submission that was impossible from the start | Live |
 | 08 | [TINY8](stories/08-tiny8/STORY.md) | An 8-bit CPU in six versions in one night, and the wall that sent the work to a 32-bit core instead | Live |
 
-## Coming later
+## COMING LATER
 
 These repos don't have stories yet — not because they aren't interesting, but because a story here needs a documented arc: a problem, real decisions, real failures, real turning points. Where the history is thin, no filler story gets written. They land when the record supports them.
 
@@ -37,6 +62,6 @@ These repos don't have stories yet — not because they aren't interesting, but 
 - **themythofsisyphusjayant** — the GitHub profile itself
 - **TECHNICAL-STORYTELLING--JAYANT-BRAIN-** — this repo, once the others exist
 
-## Writing a new story
+## WRITING A NEW STORY
 
 Use [stories/TEMPLATE.md](stories/TEMPLATE.md). Same five-part shape, same honesty rule: source everything, mark what you don't know, never invent.
